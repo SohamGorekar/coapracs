@@ -16,3 +16,14 @@ MAIN PROC
  INT 21H
 MAIN ENDP
 END MAIN
+
+To Execute
+Open DOSBOX
+Z:\> Mount D ~(curl)
+Z:\> D:
+• D:\>cd MASM
+• D:\Masm>
+• D:\MASM > MASM EXP6.asm
+• D:\MASM > LINK EXP6.obj
+• D:\MASM >DEBUG EXP6.exe
+• T

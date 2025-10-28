@@ -19,3 +19,23 @@ REP MOVSB
 INT 3H
 CODE ENDS
 END START
+
+Block Exchange
+To Execute
+Open DOSBOX
+Z:\> Mount D ~(curl)
+Z:\> D:
+• D:\>cd MASM
+• D:\Masm>
+• D:\MASM > MASM EXP5.asm
+• D:\MASM > LINK EXP5.obj
+• D:\MASM >DEBUG EXP5.exe
+• F 5000:1000 3000 0
+• F 5000:1000 1007 1 2 3 4 5 6 7 8
+• F 5000:2000 2007 11 12 13 14 15 16 17 18
+• G
+• D 5000:1000 1007
+• D 5000:2000 2007
+• (f=fill)
+• (d=display)
+• (G=Run Program) 

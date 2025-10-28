@@ -11,3 +11,23 @@ REP MOVSB
 INT 3H
 CODE ENDS
 END START
+
+ Block Transfer
+To Execute
+Open DOSBOX
+Z:\> Mount D ~(curl)
+Z:\> D:
+• D:\>cd MASM
+• D:\Masm>
+• D:\MASM > MASM EXP4.asm
+• D:\MASM > LINK EXP4.obj
+• D:\MASM >DEBUG EXP4.exe
+• F 5000:1000 3000 0
+• F 5000:1000 1007 1 2 3 4 5 6 7 8
+• D 5000:1000 1 2 3 4 5 6 7 8
+• D 5000:2000 0 0 0 0 0 0 0 0 0
+• D 5000:1000 1 2 3 4 5 6 7 8
+• D 5000:2000 1 2 3 4 5 6 7 8
+• (f=fill)
+• (d=display)
+• (G=Run Program) 

@@ -16,3 +16,17 @@ BACK: MOV AL, [BX]
  INT 3H
 CODE ENDS
 END START
+
+; To Execute
+; Open DOSBOX
+; Z:\> Mount D ~(curl)
+; Z:\> D:
+; • D:\>cd MASM
+; • D:\Masm>
+; • D:\MASM > MASM EXP2.asm
+; • D:\MASM > LINK EXP2.obj
+; • D:\MASM >TD EXP1.exe
+; • RUN
+; • VIEW
+; • ANOTHER
+; • DUMP

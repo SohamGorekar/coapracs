@@ -1,27 +1,56 @@
 .MODEL SMALL
-.STACK 100H
+    STACK 100H
 .DATA
- num1 DW 10 ; First operand
- num2 DW 5 ; Second operand
- result DW ? ; Variable to store result
+    num1 DB 4   ; First operand
+    num2 DB 2   ; Second operand
+
 .CODE
 MAIN PROC
- MOV AX, @DATA
- MOV DS, AX
- ; ----------- ADD -----------
- MOV AX, num1
- ADD AX, num2
- MOV result, AX
- ; ----------- SUB -----------
- MOV AX, num1
- SUB AX, num2
- MOV result, AX
- ; ----------- AND -----------
- MOV AX, num1
- AND AX, num2
- MOV result, AX
- ; Exit program
- MOV AH, 4CH
- INT 21H
+    MOV AX, @DATA
+    MOV DS, AX
+    ; --- ADD ---
+    MOV AL, num1
+    ADD AL, num2
+    ; --- SUB ---
+    MOV AL, num1
+    SUB AL, num2
+    ; --- MUL ---
+    MOV AL, num1
+    MOV AH,0
+    MOV BL, num2
+    MUL BL    ; AX = AX * BX
+    ; Store result (for word-size MUL, result in AX)
+    ; --- DIV ---
+    MOV AL, num1
+    MOV BL, num2
+    XOR DX, DX    ; Clear DX before division
+    DIV BL    ; AX = AX / BX, remainder in DX
+    ; --- AND ---
+    MOV AL, num1
+    AND AL, num2
+    ; --- OR ---
+    MOV AL, num1
+    OR AL, num2
+    ; --- XOR ---
+    MOV AL, num1
+    XOR AL, num2
+    ; --- NOT ---
+    MOV AL, num1
+    NOT AL
+    ; Exit program
+    MOV AH, 4CH
+    INT 21H
+
 MAIN ENDP
 END MAIN
+
+; To Execute
+; Open DOSBOX
+; Z:\> Mount D ~(curl)
+; Z:\> D:
+; • D:\>cd MASM
+; • D:\Masm>
+; • D:\MASM > MASM EXP1.asm
+; • D:\MASM > LINK EXP1.obj
+; • D:\MASM >DEBUG EXP1.exe
+; • T

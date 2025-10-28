@@ -1,0 +1,61 @@
+DISPLAY MACRO MSG
+    LEA DX, MSG
+    MOV AH, 09H
+    INT 21H
+ENDM
+
+DATA SEGMENT
+    USERMSG DB "ENTER YOUR PASSWORD: $"
+    CORRECT DB 0AH, 0DH, "PASSWORD MATCHED$"
+    WRONG DB 0AH, 0DH, "PASSWORD DOESN'T MATCHED$"
+    USER_INPUT DB 10
+               DB 10 DUP (00H)
+    PASSWORD DB "APSIT"
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME CS: CODE, DS: DATA
+START:
+    MOV AX, DATA
+    MOV DS, AX
+    MOV ES, AX
+    
+    DISPLAY USERMSG
+    
+    LEA DX, USER_INPUT
+    MOV AH, 0AH
+    INT 21H
+    
+    MOV CL, USER_INPUT+1
+    CMP CL, 05H
+    JNZ UNMATCH
+    
+    LEA SI, USER_INPUT+2
+    LEA DI, PASSWORD
+    CLD
+    REPZ CMPSB
+    JNZ UNMATCH
+    
+    DISPLAY CORRECT
+    JMP EXIT
+    
+UNMATCH:
+    DISPLAY WRONG
+    
+EXIT:
+    MOV AH, 4CH
+    INT 21H
+CODE ENDS
+END START
+
+
+
+; To Execute:
+; Open DOSBOX
+; Z:\> Mount D ~(curl)
+; Z:\> D:
+; • D:\>cd MASM
+; • D:\Masm>
+; • D:\MASM > MASM password_check.asm
+; • D:\MASM > LINK password_check.obj
+; • D:\MASM > password_check.exe

@@ -38,3 +38,12 @@ exit_program:
 mov ah, 4Ch
 int 21h
 end main
+
+Open DOSBOX
+Z:\> Mount D ~(curl)
+Z:\> D:
+• D:\>cd MASM
+• D:\Masm>
+• D:\MASM > MASM EXP7.asm
+• D:\MASM > LINK EXP7.obj
+• D:\MASM > EXP7.exe

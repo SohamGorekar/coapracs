@@ -20,3 +20,17 @@ REPEAT: DIV CL
  INT 3H
 CODE ENDS
 END START
+
+To Execute
+Open DOSBOX
+Z:\> Mount D ~(curl)
+Z:\> D:
+• D:\>cd MASM
+• D:\Masm>
+• D:\MASM > MASM EXP3.asm
+• D:\MASM > LINK EXP3.obj
+• D:\MASM >TD EXP3.exe
+• RUN
+• VIEW
+• ANOTHER
+• DUMP
